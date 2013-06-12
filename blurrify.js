@@ -32,10 +32,6 @@ $(document).ready(function(){
 
 */
 
-$(document).ready(function(){
-	$('.motion').blurrify();
-});
-
 (function($){
 	var obj = null;
 	var defaults = {
