@@ -1,0 +1,135 @@
+body{
+    background: #000;
+    color:#FFF;
+    font-family: 'Oswald', sans-serif;
+    font-size:2em;
+}
+
+a, a:visited{
+    color:#fe0086;
+}
+
+a:hover{
+    color:#0065db;
+}
+
+.item{
+    width:500px;
+    min-height:200px;
+    margin: 0 auto;
+    padding:100px 0 200px;
+}
+
+#thanks{
+    padding-bottom:100px;
+}
+
+.clear{
+    clear:both;
+}
+
+.download{
+    font-size:1.6em;
+}
+
+/** code theme **/
+
+code {
+        font-family: "Lucida Console", "Monaco", monospace;
+    }
+
+    pre {
+        color: #fff;
+        font-size: 13px;
+        background: #000;
+        padding: 10px;
+        line-height: 18px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        word-wrap: break-word;
+        margin-bottom: 15px;
+    }
+
+    code span {
+        -moz-transition: color .8s ease-in;
+        -o-transition: color .8s ease-in;
+        -webkit-transition: color .8s ease-in;
+        transition: color .8s ease-in;
+    }
+
+    .animate {
+        color: #fff !important;
+    }
+
+    .red {
+        color: #f50419;
+    }
+
+    .orange {
+        color: #f57900;
+    }
+
+    .yellow {
+        color: #f5e600;
+    }
+
+    .green {
+        color: #00f50c;
+    }
+
+    .blue {
+        color: #0081f5;
+    }
+
+    .indigo {
+        color: #5000f5;
+    }
+
+    .violet {
+        color: #7d05f5;
+    }
+
+    .comment {
+        color: #223576;
+    }
+
+    .javascript .comment {
+        color: #535353;
+    }
+
+    .meta, .entity {
+        color: #f03200;
+    }
+
+    .support {
+        color: #006dcf;
+    }
+
+    .string {
+        color: #00f50c;
+    }
+
+    .string.regexp {
+        color: #fff;
+    }
+
+    .support.attribute, .support.css-property, .support.regex.modifier {
+        color: #0087ff;
+    }
+
+    .support.value {
+        color: #1bbbcf;
+    }
+
+    .integer, .constant {
+        color: #d8fa3c;
+    }
+
+    .keyword, .selector, .storage {
+        color: #fbde2d;
+    }
+
+    .constant.regex.escape {
+        color: #d8fa3c;
+    }

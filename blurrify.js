@@ -36,7 +36,8 @@ $(document).ready(function(){
 	var obj = null;
 	var defaults = {
 		'blur': 10,
-		'length': 15
+		'length': 15,
+        'color': '255,255,255'
 	};
 	
 	var scrollPos1 = null;
@@ -57,10 +58,12 @@ $(document).ready(function(){
 		
 		shadowBlur = settings.blur;
 		shadowLength = settings.length;
+        shadowColor = settings.color;
 		
 		origText = obj.first();
 		body = $("body").first();
-		body.css("height", origText.outerHeight());
+        var offset = origText.offset();
+		body.css("height", offset.top);
 	
 		var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 									window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
@@ -92,8 +95,7 @@ $(document).ready(function(){
 		
 			if(!scrolling){
 				requestAnimationFrame(step);
-			}
-			
+			}		
 		
 			scrolling = true;
 		}
@@ -113,12 +115,25 @@ $(document).ready(function(){
 			} else {
 				upOrDown = -1
 			}
-		
-			textShadow =    "0px "+ (0*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba(255,255,255,"+ (1-opacity)/2 +"),"+ 
-							"0px "+ (1*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba(255,255,255,"+ (1-opacity)/4 +"),"+ 
-							"0px "+ (2*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba(255,255,255,"+ (1-opacity)/8 +"),"+ 
-							"0px "+ (3*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba(255,255,255,"+ (1-opacity)/16 +"),"+ 
-							"0px "+ (4*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba(255,255,255,"+ (1-opacity)/32 +")";
+		    
+            
+            if(shadowColor == "text"){
+                shadowColor = origText.css("color");          
+            } else if(shadowColor == "background"){
+                shadowColor = origText.css("background-color");
+            }
+            
+            if(hexToRgb(shadowColor)){
+                shadowColor = hexToRgb(shadowColor);
+            } else {
+                shadowColor = rgba(shadowColor);
+            }
+            
+			textShadow =    "0px "+ (0*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba("+ shadowColor +","+ (1-opacity)/2 +"),"+ 
+							"0px "+ (1*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba("+ shadowColor +","+ (1-opacity)/4 +"),"+ 
+							"0px "+ (2*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba("+ shadowColor +","+ (1-opacity)/8 +"),"+ 
+							"0px "+ (3*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba("+ shadowColor +","+ (1-opacity)/16 +"),"+ 
+							"0px "+ (4*upOrDown) * shadowLength +"px "+shadowBlur+"px rgba("+ shadowColor +","+ (1-opacity)/32 +")";
 		
 		
 			origText.css("color","rgba(255,255,255,"+ opacity +")");
@@ -134,4 +149,14 @@ $(document).ready(function(){
 		requestAnimationFrame(step);
     };
 	
+    function rgba(rgb) {
+        var rgb = rgb.replace(/^rgba?\(|\s+|\)$/g,'').split(',');
+        return rgb[0] + "," + rgb[1] + "," + rgb[2];
+    }
+    
+    function hexToRgb(hex) {
+        var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? parseInt(result[1], 16) +","+ parseInt(result[2], 16) +","+ parseInt(result[3], 16) : null;
+    }
+
 })(jQuery);
