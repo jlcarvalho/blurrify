@@ -1,5 +1,5 @@
 #Blurrify v0.2 - CSS Motion Blur
-### <a href="http://futuring.com.br/blurrify" target="_blank">Demo</a>
+### <a href="http://futuring.com.br/old/blurrify" target="_blank">Demo</a>
 
 Blurrify is a jQuery Plugin based on Ross McMillan (@RossMcMillanNet) <a href="http://rmcmillan.net/labs/motionblur" target="_blank">Motion Blur script</a>.
 
